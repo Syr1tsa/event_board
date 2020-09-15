@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
-  validates_presence_of :title, :addres, :datetime
+  belongs_to :user
+
+  validates_presence_of :title, :address, :datetime, :user
   validates :title, length: {maximum: 255}
 end
