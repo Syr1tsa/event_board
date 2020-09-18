@@ -10,6 +10,39 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+  <div class="navbar navbar-expand-sm bg-dark mb-3">
+    <div class="container">
+      <%# Для вывода названия приложения используем хелпер I18n.t %>
+      <%= link_to t('app.name'), root_path, class: 'navbar-brand' %>
+
+      <div class="navbar navbar-expand-sm justify-content-center color">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li class="bg-light p-2 mr-2"><%= link_to 'Профиль', current_user %></li>
+
+            <li class="bg-light p-2 mr-2"><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to 'Войти', new_user_session_path, class: "bg-light p-2 mr-2" %></li>
+            <li><%= link_to 'Зарегистрироваться', new_user_registration_path, class: "bg-light p-2 mr-2" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
+      <div class="col-lg-3">
+      </div>
+    </div>
+
+    <footer>
+      <%# Для вывода названия компании используем хелпер I18n.t %>
+      <p>&copy; <%= t 'app.company' %> 2016</p>
+    </footer>
+  </div>  </body>
 </html>
