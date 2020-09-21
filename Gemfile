@@ -9,6 +9,9 @@ gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'rails-i18n'
+
 
 group :production do 
   gem 'pg'
