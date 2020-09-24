@@ -3,8 +3,10 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:destroy]
 
   def create
-    @new_subscription = @event.subscriptions.build(subscription_params)
-    @new_subscription.user = current_user
+    if current_user.id != @event.user_id
+      @new_subscription = @event.subscriptions.build(subscription_params)
+      @new_subscription.user = current_user
+    end
 
     if @new_subscription.save
       redirect_to @event, notice: I18n.t("controllers.subscriptions.created")
