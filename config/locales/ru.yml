@@ -31,6 +31,10 @@ ru:
       error: 'Ошибка с комментарием'
       comment:
         destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
+    subscriptions:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
   app:
     name: 'Доска событий'
     company: 'Хороший программист'
@@ -39,3 +43,6 @@ ru:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
     many: '%{count} ошибок'
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'

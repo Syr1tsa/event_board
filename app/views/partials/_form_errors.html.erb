@@ -6,10 +6,11 @@
       В вашей форме <%= I18n.t :errors_count, count: errors.count %>
     </div>
 
-    <ul>
       <% errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="alert btn-danger my-btn" role="alert">
+          <button class="close" data-dismiss="alert">x</button>
+          <%= message %>
+        </div>
       <% end %>
-    </ul>
   </div>
 <% end %>
