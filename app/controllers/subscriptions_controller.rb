@@ -3,10 +3,8 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:destroy]
 
   def create
-    unless current_user_can_edit?(@event)
-      @new_subscription = @event.subscriptions.build(subscription_params)
-      @new_subscription.user = current_user
-    end
+    @new_subscription = @event.subscriptions.build(subscription_params)
+    @new_subscription.user = current_user
 
     if @new_subscription.save
       redirect_to @event, notice: I18n.t("controllers.subscriptions.created")

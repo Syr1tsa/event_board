@@ -31,6 +31,6 @@ class Subscription < ApplicationRecord
   private
 
   def user_present
-    self.user_email = nil if User.where(email: user_email&.downcase!).present?
+    self.user_email = nil if User.where(email: user_email.downcase).present?
   end
 end
