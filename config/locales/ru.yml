@@ -5,12 +5,12 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
-
-    # Перевод атрибутов моделей
+      photo: 'Фотография'
     attributes:
       user:
         email: 'Email'
         name: 'Имя'
+        avatar: 'Аватар'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
       event:
@@ -18,7 +18,15 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      photo:
+        photo: 'Фотография'
+      comment:
+        body: 'Текст комментария'
   controllers:
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
     events:
       created: 'Вы создали новое мероприятие'
       updated: 'Вы обновили мероприятие'
