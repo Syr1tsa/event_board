@@ -7,7 +7,7 @@
   <div class="buffer-both">
     <%= link_to "Редактировать профиль", edit_user_path(@user),
                 class: 'btn btn-info' %>
-    <%= link_to 'Удалить свой аккаунт', user_path(@user), method: :delete, data: {confirm: t('are_you_sure')}, class: ' btn btn-danger' %>
+    <%= link_to 'Удалить свой аккаунт', user_path(@user), method: :delete, data: {confirm: t('are_you_sure.users')}, class: ' btn btn-danger' %>
   </div>
   <% end %>
 

@@ -10,7 +10,7 @@ class Subscription < ApplicationRecord
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
-  before_validation :user_present
+  before_validation :set_email, :set_user
 
   def user_name
     if user.present?
@@ -30,7 +30,11 @@ class Subscription < ApplicationRecord
 
   private
 
-  def user_present
+  def set_user
+    self.user = nil if user&.events&.include?(event)
+  end
+
+  def set_email
     self.user_email = nil if User.where(email: user_email.downcase).present?
   end
 end
