@@ -7,10 +7,12 @@ class Subscription < ApplicationRecord
   validates :user_name, presence: true, unless: -> { user.present? }
   validates :user_email, presence: true, format: REGEX_FOR_EMAIL, unless: -> { user.present? }
 
+  # my validations
+  validate :user_email_present
+  validate :user_own_event
+
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
-
-  before_validation :set_email, :set_user
 
   def user_name
     if user.present?
@@ -30,11 +32,17 @@ class Subscription < ApplicationRecord
 
   private
 
-  def set_user
-    self.user = nil if user&.events&.include?(event)
+  # my validations
+
+  def user_own_event
+    if user&.events&.include?(event)
+      errors.add(:user, I18n.t("activerecord.models.errors.user_own_event"))
+    end
   end
 
-  def set_email
-    self.user_email = nil if User.where(email: user_email.downcase).present?
+  def user_email_present
+    if User.where(email: user_email.downcase).present?
+      errors.add(:user_email, I18n.t("activerecord.models.errors.email_already_exist"))
+    end
   end
 end

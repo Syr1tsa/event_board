@@ -6,6 +6,9 @@ ru:
       user: 'Пользователь'
       event: 'Событие'
       photo: 'Фотография'
+      errors:
+        email_already_exist: "Пользователь с таким email уже зарегестрирован на сайте!"
+        user_own_event: "Вы не можете подписать на своё событие!"
     attributes:
       user:
         email: 'Email'
